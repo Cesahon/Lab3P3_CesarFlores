@@ -61,10 +61,41 @@ void aceleradorParticulas() {
         pCol[pos] = j;
         pos++;
     }
-    for (int i = 1; numero - 1; ++i) { //
+    for (int i = 1; numero - 1; ++i) { // arriba hacia abao
         pFila[pos] = i;
         pCol[pos] = numero - 1;
         pos++;
+    }
+    for (int j = numero - 2; j >= 1; --j) {
+        pFila[pos] = numero - 1;
+        pCol[pos] = j;
+        pos++;
+    }
+    for (int i = numero - 2 ; i >= 1; --i) {
+        pFila[pos] = i;
+        pCol[pos] = 0;
+        pos++;
+    }
+    
+    int velocidad = 0;
+    cout << "Velocidad actual: " << velocidad << " u/s" << endl;
+    cout << "1. Agregar Velocidad";
+    cout << "2. Quitar Velocidad";
+    cout << "3. Continuar";
+    int op = 0;
+    switch (op) {
+        case 1:
+            velocidad++;
+            
+            break;
+        case 2:
+            <#statements#>
+            break;
+        case 3:
+            <#statements#>
+            break;
+        default:
+            break;
     }
     }
 int main(int argc, const char * argv[]) {
