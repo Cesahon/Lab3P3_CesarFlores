@@ -19,8 +19,11 @@ void aceleradorParticulas() {
     for (int indice = 0; indice < numero; ++indice) {
         matriz[indice] = new char[numero];
         for (int j = 0; j < numero; ++j) {
-            if ((indice == 0 && j == 0) || (indice == 0 && j - numero - 1) || (indice == numero - 1  && j == 0) || (indice == numero - 1 && j == numero - 1)) {
+            //            if ((indice == 0 && j == 0) || (indice == 0 && j == numero - 1) || (indice == numero - 1  && j == 0) || (indice == numero - 1 && j == numero - 1)) {
+            //                matriz[indice][j] = ' ';
+            if (indice == 0 || j == 0 || indice == numero -1 || j == numero - 1) {
                 matriz[indice][j] = ' ';
+            
             }else if(indice == mitad && j == mitad) {
                 matriz[indice][j] = '+';
             }else if (indice == 0 || indice == numero - 1 || j == 0 || j == numero - 1) {
@@ -33,14 +36,18 @@ void aceleradorParticulas() {
         }
     }
     matriz[0][0] = '*';
+
     for (int indice = 0; indice < numero; ++indice) {
+        
         for (int j = 0; j < numero; ++j) {
-            if (matriz[indice][j] == ' ') {
-                cout << "   ";
+            if ((indice == 0 && j == 0) || (indice == 0 && j == numero - 1) || (indice == numero - 1  && j == 0) || (indice == numero - 1 && j == numero - 1)) {
+                cout << matriz[indice][j];
+            }else if (indice == 0 || j == 0 || indice == numero -1 || j == numero - 1) {
+                cout << "[" << matriz[indice][j] << "]";
             }else if (matriz[indice][j] == '+') {
                 cout << "[" << matriz[indice][j] << "]";
             }else{
-                cout << "[" << matriz[indice][j] << "]";
+                cout << "   ";
             }
         }
         cout << endl;
