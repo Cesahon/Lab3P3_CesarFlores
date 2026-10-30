@@ -41,7 +41,7 @@ void aceleradorParticulas() {
         
         for (int j = 0; j < numero; ++j) {
             if ((indice == 0 && j == 0) || (indice == 0 && j == numero - 1) || (indice == numero - 1  && j == 0) || (indice == numero - 1 && j == numero - 1)) {
-                cout << matriz[indice][j];
+                cout << " " << matriz[indice][j] << " ";
             }else if (indice == 0 || j == 0 || indice == numero -1 || j == numero - 1) {
                 cout << "[" << matriz[indice][j] << "]";
             }else if (matriz[indice][j] == '+') {
@@ -51,6 +51,20 @@ void aceleradorParticulas() {
             }
         }
         cout << endl;
+    }
+    int totalCasillas = 4 * (numero -2);
+    int* pFila = new int[totalCasillas];
+    int* pCol = new int[totalCasillas];
+    int pos = 0;
+    for (int j = 1; j < numero - 1; ++j) { // izquierda a derecha
+        pFila[pos] = 0;
+        pCol[pos] = j;
+        pos++;
+    }
+    for (int i = 1; numero - 1; ++i) { //
+        pFila[pos] = i;
+        pCol[pos] = numero - 1;
+        pos++;
     }
     }
 int main(int argc, const char * argv[]) {
