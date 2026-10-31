@@ -32,9 +32,39 @@ void aceleradorParticulas() {
                 matriz[indice][j] = ' ';
             }
             
-            
         }
     }
+    
+    int totalCasillas = 4 * (numero -2);
+    int* pFila = new int[totalCasillas];
+    int* pCol = new int[totalCasillas];
+    int pos = 0;
+    for (int j = 1; j < numero - 1; ++j) { // izquierda a derecha
+        pFila[pos] = 0;
+        pCol[pos] = j;
+        pos++;
+    }
+    for (int i = 1; i < numero - 1; ++i) { // arriba hacia abao
+        pFila[pos] = i;
+        pCol[pos] = numero - 1;
+        pos++;
+    }
+    for (int j = numero - 2; j >= 1; --j) {
+        pFila[pos] = numero - 1;
+        pCol[pos] = j;
+        pos++;
+    }
+    for (int i = numero - 2 ; i >= 1; --i) {
+        pFila[pos] = i;
+        pCol[pos] = 0;
+        pos++;
+    }
+    int velocidad = 0;
+    int postParticula = 0;
+    int mensaje = 0;
+    
+ 
+//    matriz[pFila[postParticula]pCol[postParticula]] = '*'; da error esto
     matriz[0][0] = '*';
 
     for (int indice = 0; indice < numero; ++indice) {
@@ -52,48 +82,46 @@ void aceleradorParticulas() {
         }
         cout << endl;
     }
-    int totalCasillas = 4 * (numero -2);
-    int* pFila = new int[totalCasillas];
-    int* pCol = new int[totalCasillas];
-    int pos = 0;
-    for (int j = 1; j < numero - 1; ++j) { // izquierda a derecha
-        pFila[pos] = 0;
-        pCol[pos] = j;
-        pos++;
-    }
-    for (int i = 1; numero - 1; ++i) { // arriba hacia abao
-        pFila[pos] = i;
-        pCol[pos] = numero - 1;
-        pos++;
-    }
-    for (int j = numero - 2; j >= 1; --j) {
-        pFila[pos] = numero - 1;
-        pCol[pos] = j;
-        pos++;
-    }
-    for (int i = numero - 2 ; i >= 1; --i) {
-        pFila[pos] = i;
-        pCol[pos] = 0;
-        pos++;
+    if (mensaje == 1) {
+        cout << "Se automento la velocidad 1 unidad" << endl;
+        
+    }else if (mensaje == 2) {
+        cout << "Se disminuyo la velocidad 1 unidad" << endl;
+    }else if (mensaje == 3) {
+        cout << "Se mantiene la velocidad" << endl;
     }
     
-    int velocidad = 0;
     cout << "Velocidad actual: " << velocidad << " u/s" << endl;
-    cout << "1. Agregar Velocidad";
-    cout << "2. Quitar Velocidad";
-    cout << "3. Continuar";
+    cout << "1. Agregar Velocidad" << endl;
+    cout << "2. Quitar Velocidad" << endl;
+    cout << "3. Continuar" << endl;
+    cout << "4. Detener y limpiar" << endl;
+    cout << "Ingresa opcion a realizar: ";
     int op = 0;
+    cin >> op;
     switch (op) {
         case 1:
             velocidad++;
-            
+            mensaje = 1;
+            postParticula = (postParticula + velocidad) % totalCasillas;
             break;
         case 2:
-            <#statements#>
+            if (velocidad > 0) {
+                velocidad--;
+                mensaje = 2;
+            }else{
+                mensaje = 3;
+            }
+            postParticula = (postParticula + velocidad ) % totalCasillas;
             break;
         case 3:
-            <#statements#>
+            mensaje = 3;
+            postParticula = (postParticula + velocidad ) % totalCasillas;
             break;
+        case 4:
+            system("cls");
+            break;
+
         default:
             break;
     }
